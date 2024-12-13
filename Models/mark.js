@@ -8,16 +8,16 @@ let markSchema = new mongoose.Schema({
     },
     student: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "Student",
+        ref: "student",
         required: true
     },
     subject: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "Subject",
+        ref: "subject",
         required: true
     }
 })
-markSchema.index({ student: 1, subject: 1 })
+// markSchema.index({ student: 1, subject: 1 })
 const Marks = mongoose.model("marks",markSchema)
 
 export default Marks

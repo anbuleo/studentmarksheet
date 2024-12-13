@@ -32,11 +32,11 @@ const genrateRankcard = async(req,res,next)=>{
 
         if(!student) return next({message:"user not found",statusCode:400})
         
-            const marks = await Marks.find({ student: studentId }).populate("subjects", "name").exec();
+            const marks = await Marks.find({ student: studentId }).populate("subject", "name").exec();
             if(!marks.length){
                 return res.status(404).json({ message: "Marks not found" });
             }
-            console.log(marks)
+            // console.log(marks)
             const totalMarks = marks.reduce((acc, mark) => acc + mark.marks, 0);
         const pass = marks.every((mark) => mark.marks >= 50);  
         res.status(200).json({
